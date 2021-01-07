@@ -68,25 +68,43 @@
 
 
 <script>
-    // onload _createNewElement
-    document.body.onload = _createNewElement;
-    // function
-    function _createNewElement() {
-        // gquerySelector
-        const divEl = document.querySelector('.div');
-        // createElement
-        const h1El = document.createElement("h1");
-        // createTextNode
-        const h1ElNode = document.createTextNode("Hello World");
-        // setAttribute
-        divEl.setAttribute("id", "target");
-        // appendChild
-        h1El.appendChild(h1ElNode);
-        // appendChild
-        divEl.appendChild(h1El);
+    // onload call function
+    //    document.body.onload = fun;
+    // function 
+    document.body.onload = fun = () => {
+        const element1 = document.querySelector('.div');
+        const element2 = document.createElement("div");
+        const element3 = document.createElement("div");
+        const node1 = document.createTextNode("Navbar");
+
+        // setAttribute to querySelector
+        element1.setAttribute("id", "target");
+        // appendChild to createTextNode
+        element2.appendChild(node1);
+        // appendChild to createElement
+        element1.appendChild(element2);
+
+        element2.setAttribute("style", 'position: fixed  width: 100%; padding: 1rem 0; background-color: black; text-align: center;');
+
         // log
-        console.log(divEl);
-    }
+
+        console.log(element1);
+    };
+
+
+
+
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 60 && $(window).width() >= 767) {
+
+            $('#l2').appendTo($('#discountninja-sticky-lg'))
+            $(".limoniapps-discountninja-headersection").detach().appendTo($('#discountninja-sticky-lg'))
+        } else {
+            $('#l1').appendTo($('#discountninja-sticky-sm'))
+            $(".limoniapps-discountninja-headersection").detach().appendTo($('#discountninja-sticky-sm'))
+
+        }
+    });
 
 
 
