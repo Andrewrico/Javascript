@@ -1,20 +1,20 @@
 window.addEventListener('load', (e) => {
 
     // set data
-    const domFactory = document.querySelector("#element-factory");
-    let elementName = 'newElement';
+    const domFactory = document.querySelector("#element-factory")
+    let elementName = 'newElement'
     let elementTagOne = 'div'
-    let elementIdOne = 'first-group';
-    let elementCountOne = Number('100');
+    let elementIdOne = 'first-group'
+    let elementCountOne = Number('100')
     let elementTagTwo = 'span'
-    let elementIdTwo = 'second-group';
-    let elementCountTwo = Number('100');
+    let elementIdTwo = 'second-group'
+    let elementCountTwo = Number('100')
 
     // function create new elements
     const domNewElements = () => {
 
         // get fragment
-        let newFragment = new DocumentFragment();
+        let newFragment = new DocumentFragment()
 
         // if fragment is defined
         if (newFragment !== undefined) {
@@ -37,18 +37,27 @@ window.addEventListener('load', (e) => {
 
             // return fragment with groups
             return newFragment;
+            
+        } else {
+
+            // return false and log
+            console.log('Something went wrong!');
+            return false;
+
         }
     }
 
-    // append created elements to the dom
-    domFactory.append(domNewElements());
+    // if function domNewElements is defined return function domGetElements
+    if (domNewElements !== undefined || domGetElements !== null) {
+        domFactory.append(domNewElements());
+    } 
 
     // manipulate elements
     const domGetElements = () => {
 
         // groups
-        let groupOne = document.querySelectorAll(`[id*="${elementName}-${elementIdOne}-"][class*="${elementName}"]`);
-        let groupTwo = document.querySelectorAll(`[id*="${elementName}-${elementIdTwo}-"][class*="${elementName}"]`);
+        let groupOne = document.querySelectorAll(`[id*="${elementName}-${elementIdOne}-"][class*="${elementName}"]`)
+        let groupTwo = document.querySelectorAll(`[id*="${elementName}-${elementIdTwo}-"][class*="${elementName}"]`)
 
         // if function domNewElements is define
         if (domNewElements !== undefined) {
@@ -63,19 +72,20 @@ window.addEventListener('load', (e) => {
                 groupTwo[i].style.right = '30%'
             };
 
-            // log
-            console.log(document.querySelectorAll(`[class*="${elementName}"]`))
-
         } else {
 
+            // return false and log
+            console.log('Something went wrong!')
             return false;
-            
+
         }
     }
 
     // if function domNewElements is defined return function domGetElements
-    if (domNewElements !== undefined || domGetElements !== null) {
-        domGetElements()
+    if (domNewElements !== undefined || domNewElements !== null) {
+        domGetElements();
+        console.log(document.querySelectorAll(`[class*="${elementName}"]`));
     };
+
 
 });
