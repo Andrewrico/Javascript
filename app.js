@@ -6,12 +6,12 @@ window.addEventListener('load', (e) => {
   let elementName = 'unit'
 
   let elementHTMLTagOne = 'div'
-  let elementIdOne = 'orange'
-  let elementCountOne = Number('25')
+  let elementIdOne = 'seudo'
+  let elementCountOne = Number('50')
 
   let elementHTMLTagTwo = 'div'
-  let elementIdTwo = 'red'
-  let elementCountTwo = Number('25')
+  let elementIdTwo = 'B'
+  let elementCountTwo = Number('50')
 
   // parent div
   const createNewElement = () => {
@@ -33,6 +33,8 @@ window.addEventListener('load', (e) => {
 
       // if fragment is defined
       if (newFragment !== undefined) {
+
+          let newElement = [];
 
           // create group one
           for (let i = 1; i <= elementCountOne; i++) {
@@ -80,12 +82,32 @@ window.addEventListener('load', (e) => {
 
           // manipulate group one
           for (let i = groupOne.length - 1; i >= 0; i--) {
+
+            groupOne[i].style.background = 'yellow'              
+
+            if (i <= 10) {
+              groupOne[i].style.background = 'green'              
+            }
+            if (i >= 10 && i <= 20) {
               groupOne[i].style.background = 'orange'              
+            }
+            groupOne[20].style.background = 'maroon'              
+            groupOne[30].style.background = 'maroon'              
+            groupOne[40].style.background = 'maroon'   
           }
       
           // manipulate group two
           for (let i = groupTwo.length - 1; i >= 0; i--) {
-              groupTwo[i].style.background = 'red'
+
+            groupTwo[i].style.background = 'red'              
+
+            if (i <= 10) {
+              groupTwo[i].style.background = 'blue'              
+            }
+
+            groupTwo[20].style.background = 'maroon'              
+            groupTwo[30].style.background = 'maroon'              
+            groupTwo[40].style.background = 'maroon'
           }
           
       } else {
@@ -97,16 +119,16 @@ window.addEventListener('load', (e) => {
       }
 
       const elementStylesheet = document.createElement('style')
-      elementStylesheet.innerHTML = 
-      '.unit {' +
-          'height: 100px;' +
-          'width: 100%;' +
-          'background: orange;' +
-      '}' +
-      '#unit-red-1 {' +
-          'background: green!important;' +
-      '}' 
+      elementStylesheet.innerHTML =`
+          .unit {
+              height: 100px;
+              width: 100%;
+          };
 
+          #unit-red-1 {
+              background: ;
+          };
+      `; 
       let currentScriptTag = document.querySelector('script');
       currentScriptTag.parentNode.insertBefore(elementStylesheet, currentScriptTag);
 
