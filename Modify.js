@@ -30,8 +30,7 @@
                     style.innerHTML =
                     '#launcher {' +
                         'width: 135px!important;' +
-                    '}';
-                    style.innerHTML =
+                    '};'
                     '.wrapper-AtBcr {' +
                         'width: 135px!important;' +
                         'height: 45px!important;' +
@@ -41,8 +40,7 @@
                     style.innerHTML =
                     '#launcher {' +
                         'width: 45px;' +
-                    '}';
-                    style.innerHTML =
+                    '};'
                     '.wrapper-AtBcr {' +
                         'width: 45px!important;' +
                         'height: 45px!important;' +
