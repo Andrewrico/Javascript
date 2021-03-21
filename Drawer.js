@@ -8,62 +8,62 @@
         drawer.setAttribute('tabindex', 1);
         style.innerHTML =
             '#drawer {' +
-            'height: 100vh;' +
-            'width: 85%;' +
-            'max-width: 400px;' +
-            'opacity: 1;' +
+                'height: 100vh;' +
+                'width: 85%;' +
+                'max-width: 400px;' +
+                'opacity: 1;' +
             '};'
-        '#backdrop {' +
-        'display: block;'
-        '};'
-        'html {' +
-        'overflow: hidden;'
-        '};';
+            '#backdrop {' +
+                'display: block;'
+            '};'
+            'html {' +
+                'overflow: hidden;'
+            '};';
     });
     close.addEventListener('click', () => {
         drawer.setAttribute('tabindex', 0);
         style.innerHTML =
             '#drawer {' +
-            'width: 0;' +
-            'max-width: 0;' +
-            'opacity: 0;' +
+                'width: 0;' +
+                'max-width: 0;' +
+                'opacity: 0;' +
             '};'
-        '#backdrop {' +
-        'display: none;'
-        '};'
-        'html {' +
-        'overflow: auto;'
-        '};';
+            '#backdrop {' +
+                'display: none;'
+            '};'
+            'html {' +
+                'overflow: auto;'
+            '};';
     });
     backdrop.addEventListener('click', () => {
         drawer.setAttribute('tabindex', 1);
         style.innerHTML =
             '#drawer {' +
-            'width: 0;' +
-            'max-width: 0;' +
-            'opacity: 0;' +
+                'width: 0;' +
+                'max-width: 0;' +
+                'opacity: 0;' +
             '};'
-        '#backdrop {' +
-        'display: none;'
-        '};'
-        'html {' +
-        'overflow: auto;'
-        '};';
+            '#backdrop {' +
+                'display: none;'
+            '};'
+            'html {' +
+                'overflow: auto;'
+            '};';
     });
 
     function windowMatchMedia(mediaMatch) {
         if (mediaMatch.matches) {
             style.innerHTML =
-                '#drawer {' +
+            '#drawer {' +
                 'width: 0;' +
                 'max-width: 0;' +
                 'opacity: 0;' +
-                '};'
+            '};'
             '#backdrop {' +
-            'display: none;'
+                'display: none;'
             '};'
             'html {' +
-            'overflow: auto;'
+                'overflow: auto;'
             '};';
         }
     };
