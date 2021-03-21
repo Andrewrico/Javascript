@@ -8,7 +8,8 @@ window.addEventListener('load', (e) => {
 
 
     // only save cookie in this location
-    if (window.location.pathname !== undefined && window.location.pathname === COOKIE_TRIGGER) {
+    // if (window.location.pathname !== undefined && window.location.pathname === COOKIE_TRIGGER) {
+    if ('/path/page.html' in window.location.pathname) {
 
         // if location set value to true
         COOKIE_VALUE = true
