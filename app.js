@@ -102,10 +102,10 @@ window.addEventListener('load', (e) => {
           'height: 100px;' +
           'width: 100%;' +
           'background: orange;' +
-      '};' +
-      '#unit-red-1{' +
-          'background: red;' +
-      '};'
+      '}' +
+      '#unit-red-1 {' +
+          'background: green!important;' +
+      '}' 
 
       let currentScriptTag = document.querySelector('script');
       currentScriptTag.parentNode.insertBefore(elementStylesheet, currentScriptTag);
