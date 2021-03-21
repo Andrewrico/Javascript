@@ -1,82 +1,60 @@
-const canvasNewElements = document.querySelector("#GenerateElements");
+window.addEventListener('load', (e) => {
 
-let elementClassName =  'genElement';
-let elementId =  'element';
-let iElementTag = 'div'
-let iElementId =  'div';
-let iElementCount = Number('1000');
-let iiElementTag = 'span'
-let iiElementId =  'span';
-let iiElementCount = Number('10000');
+    const canvasNewElements = document.querySelector("#GenerateElements");
+    let elementName = 'luci';
+    let ElementTagOne = 'div'
+    let elementIdOne = 'carollina';
+    let elementCountOne = Number('10');
 
-const generateNewElements = () => {
+    let elementTagTwo = 'span'
+    let elementIdTwo = 'sofia';
+    let elementCountTwo = Number('10');
 
-    let newElement = this;
-    let newFragment = new DocumentFragment();
+    const domNewElements = () => {
 
+        let newElement = this;
+        let newFragment = new DocumentFragment();
 
+        for (let i = 1; i <= elementCountOne; i++) {
+            newElement = document.createElement(`${ElementTagOne}`);
+            newElement.setAttribute('id', `${elementName}-${elementIdOne}-${[i]}`);
+            newElement.setAttribute('class', `${elementName}`);
+            newFragment.append(newElement);
+        };
 
-    for (let i = 1; i <= iElementCount; i++) {
-        newElement = document.createElement(`${iElementTag}`);
-        newElement.append(i.innerContent = '')
-        newElement.setAttribute('id', `${elementId}-${iElementId}-${[i]}`);
-        newElement.setAttribute('class', `${elementClassName}`);
-        newFragment.append(newElement);
+        for (let i = 1; i <= elementCountTwo; i++) {
+            newElement = document.createElement(`${elementTagTwo}`)
+            newElement.setAttribute('id', `${elementName}-${elementIdTwo}-${[i]}`);
+            newElement.setAttribute('class', `${elementName}`);
+            newFragment.append(newElement);
+        };
+
+        return newFragment;
     };
 
-    for (let i = 1; i <= iiElementCount; i++) {
-        newElement = document.createElement(`${iiElementTag}`)
-        newElement.append(i.innerContent = '')
-        newElement.setAttribute('id', `${elementId}-${iiElementId}-${[i]}`);
-        newElement.setAttribute('class', `${elementClassName}`);
-        newFragment.append(newElement);
-    };
+    canvasNewElements.append(domNewElements());
 
-    return newFragment;
-};
+    const domGetElements = () => {
 
-canvasNewElements.append(generateNewElements());
+        let a = document.querySelectorAll(`[id*="${elementName}-${elementIdOne}-"][class*="${elementName}"]`);
+        let b = document.querySelectorAll(`[id*="${elementName}-${elementIdTwo}-"][class*="${elementName}"]`);
 
-let set1 =  document.querySelectorAll(`[id*="${elementId}-${iElementId}-"][class*="${elementClassName}"]`);
-for (let i = set1.length - 1; i >= 0; i--) {
-    set1[i].style.left = '30%'
-};
+        if (generateNewElements !== undefined) {
 
-let set2 =  document.querySelectorAll(`[id*="${elementId}-${iiElementId}-"][class*="${elementClassName}"]`);
-for (let i = set2.length - 1; i >= 0; i--) {
-    set2[i].style.right = '30%'
-};
+            for (let i = a.length - 1; i >= 0; i--) {
+                a[i].style.left = '30%'
+            };
+        
+            for (let i = b.length - 1; i >= 0; i--) {
+                b[i].style.right = '30%'
+            };
 
+        } else {
 
+            return false;
+        }
+    }
 
-
-
-// let set1 =  document.querySelectorAll(`[id*="${_IDName}-${_1ElementId}-"][class*="${_className}"]`);
-// for (let i = set1.length - 1; i >= 0; i--) {
-//     set1[i].style.left = '30%'
-//     icon[0].style.left = '30%'
-//     icon[1].style.left = '30%'
-//     icon[2].style.left = '30%'
-//     icon[3].style.left = '30%'
-//     icon[4].style.left = '30%'
-//     icon[5].style.left = '30%'
-//     icon[6].style.left = '30%'
-//     icon[7].style.left = '30%'
-//     icon[8].style.left = '30%'
-//     icon[9].style.left = '30%'
-// };
-// let set2 =  document.querySelectorAll(`[id*="${_IDName}-${_2ElementId}-"][class*="${_className}"]`);
-
-// for (let i = c.length - 1; i >= 0; i--) {
-//     set2[i].style.right = '30%'
-//     pin[0].style.left = '30%'
-//     pin[1].style.left = '30%'
-//     pin[2].style.left = '30%'
-//     pin[3].style.left = '30%'
-//     pin[4].style.left = '30%'
-//     pin[5].style.left = '30%'
-//     pin[6].style.left = '30%'
-//     pin[7].style.left = '30%'
-//     pin[8].style.left = '30%'
-//     pin[9].style.left = '30%'
-// };
+    domGetElements();
+  
+});
