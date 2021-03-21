@@ -50,7 +50,7 @@ window.addEventListener('load', (e) => {
         let groupOne = document.querySelectorAll(`[id*="${elementName}-${elementIdOne}-"][class*="${elementName}"]`);
         let groupTwo = document.querySelectorAll(`[id*="${elementName}-${elementIdTwo}-"][class*="${elementName}"]`);
 
-        // if function create new elements is define
+        // if function domNewElements is define
         if (domNewElements !== undefined) {
 
             // manipulate group one
@@ -68,13 +68,13 @@ window.addEventListener('load', (e) => {
 
         } else {
 
-            // unless criterial is fullfill return false
             return false;
+            
         }
     }
 
-    // if domNewElements if defined return domGetElements
-    if (domNewElements == undefined || domGetElements !== null) {
+    // if function domNewElements is defined return function domGetElements
+    if (domNewElements !== undefined || domGetElements !== null) {
         domGetElements()
     };
 
