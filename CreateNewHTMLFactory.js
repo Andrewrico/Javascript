@@ -1,7 +1,10 @@
-window.addEventListener('load', (e) => {
-  // set data
+
+window.addEventListener('load', () => {
+  // data
   let factoryHTMLTag = 'div'
   let factoryId = 'factory'
+  let elements1;
+  let elements2;
 
   // parent div
   const createNewElement = () => {
@@ -24,8 +27,8 @@ window.addEventListener('load', (e) => {
     // if fragment is defined
     if (newFragment !== undefined) {
 
-    // Obj
-    function newElementObj(count,tag,id,className) {
+    // Create Obj
+    function newProtoObj(count, tag, id, className) {
         this.count = count,
         this.tag = tag,
         this.id = id,
@@ -33,7 +36,7 @@ window.addEventListener('load', (e) => {
     }
     
     // Create HTML
-    newElementObj.prototype.createNewHTML = function() {
+    newProtoObj.prototype.createNewHTML = function() {
         let newElement = [];
         for (let i = 1; i <= this.count; i++) {
           newElement = document.createElement(`${this.tag}`);
@@ -44,25 +47,11 @@ window.addEventListener('load', (e) => {
     }
 
     // New HTML
-    let elements1 = new newElementObj(
-          count = 1,
-          tag = 'div',
-          id = 'group1',
-          className = 'group1 dynamicElement'
-    );
-    elements1.createNewHTML();
-
-    // New HTML
-    let elements2 = new newElementObj(
-        count = 1,
-        tag = 'div',
-        id = 'group2',
-        className = 'group2 dynamicElement'
-    );
-    elements2.createNewHTML();
+    elements1 = new newProtoObj(1, 'div', 'group1', 'group1 dynamicElement').createNewHTML();
+    elements2 = new newProtoObj(1, 'div', 'group2', 'group2 dynamicElement').createNewHTML();
 
       // return fragment with groups
-      return newFragment;
+    return newFragment;
 
     } else {
 
@@ -71,6 +60,7 @@ window.addEventListener('load', (e) => {
       return false;
 
     }
+
   }
 
   // if function domNewElements is defined return function domGetElements
@@ -78,74 +68,50 @@ window.addEventListener('load', (e) => {
   if (domNewElements !== undefined || domNewElements !== null) {
     domFactory.append(domNewElements());
   }
+
   // manipulate elements
   const domGetElements = () => {
 
-    // if(
-    //   elements1 !== undefined ||
-    //   elements2 !== undefined ||
-    //   elements3 !== undefined ||
-    //   elements4 !== undefined
-    // ) {
-      let groupOne = document.querySelectorAll(`[id*="${elements1.id}-"][class*="${elements1.className}"]`)
-      let groupTwo = document.querySelectorAll(`[id*="${elements2.id}-"][class*="${elements2.className}"]`)
-      let groupThree = document.querySelectorAll(`[id*="${elements3.id}-"][class*="${elements3.className}"]`)
-      let groupFour = document.querySelectorAll(`[id*="${elements4.id}-"][class*="${element4.className}"]`)
-    
-    // let groupOne = document.querySelectorAll(`[id*="${elementName}-${elementIdOne}-"][class*="${elementName}"]`)
-    // let groupTwo = document.querySelectorAll(`[id*="${elementName}-${elementIdTwo}-"][class*="${elementName}"]`)
+    // elements
+    let groupOne = document.querySelectorAll(`[id*="${elements1.id}-"][class*="${elements1.className}"]`)
+    let groupTwo = document.querySelectorAll(`[id*="${elements2.id}-"][class*="${elements2.className}"]`)
 
     // if function domNewElements is define
-    for (let i = 0; i < groupOne.length; i++) {
       if (domNewElements !== undefined) {
-
         // manipulate group one
         for (let i = groupOne.length - 1; i >= 0; i--) {
-
           groupOne[i].style.background = 'yellow'
-
           if (i <= 10) {
             groupOne[i].style.background = 'green'
           }
-
           if (i >= 10 && i <= 20) {
             groupOne[i].style.background = 'orange'
           }
-
           groupOne[20].style.background = 'maroon'
           groupOne[30].style.background = 'maroon'
           groupOne[40].style.background = 'maroon'
         }
-
         // manipulate group two
         for (let i = groupTwo.length - 1; i >= 0; i--) {
-
           groupTwo[i].style.background = 'red'
-
           if (i <= 10) {
             groupTwo[i].style.background = 'blue'
           }
-
           groupTwo[20].style.background = 'maroon'
           groupTwo[30].style.background = 'maroon'
           groupTwo[40].style.background = 'maroon'
         }
-
       } else {
-
         // return false and log
         console.log('Something went wrong!')
         return false;
-
       }
-
       const elementStylesheet = document.createElement('style')
       elementStylesheet.innerHTML = `
               .dynamicElement {
                   height: 100px;
                   width: 100%;
               };
-
               #unit-red-1 {
                   background: ;
               };
@@ -153,13 +119,12 @@ window.addEventListener('load', (e) => {
       let currentScriptTag = document.querySelector('script');
       currentScriptTag.parentNode.insertBefore(elementStylesheet, currentScriptTag);
 
-    }
+    } // const domGetElements = () => {
+
 
     // if function domNewElements is defined return function domGetElements
     if (domNewElements !== undefined || domNewElements !== null) {
       domGetElements();
-      console.log(document.querySelectorAll(`[class*="${NewElement.className}"]`));
     };
-  // }  
-};
+
 });
