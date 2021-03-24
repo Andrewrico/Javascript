@@ -4,6 +4,14 @@ window.addEventListener('load', () => {
   let factoryHTMLTag = 'div'
   let factoryId = 'factory'
 
+    // Create Obj
+    function newProtoObj(count, tag, id, className) {
+      this.count = count,
+      this.tag = tag,
+      this.id = id,
+      this.className = className
+  }
+
   // parent div
   const createNewElement = () => {
     const factoryWrapper = document.createElement(`${factoryHTMLTag}`);
@@ -16,23 +24,14 @@ window.addEventListener('load', () => {
     createNewElement();
   }
 
-  // function create new elements
+  // function domNewElements
   const domNewElements = () => {
 
     // get fragment
     let newFragment = new DocumentFragment()
 
-    // if fragment is defined
     if (newFragment !== undefined) {
 
-    // Create Obj
-    function newProtoObj(count, tag, id, className) {
-        this.count = count,
-        this.tag = tag,
-        this.id = id,
-        this.className = className
-    }
-    
     // Create HTML
     newProtoObj.prototype.createNewHTML = function() {
         let newElement = [];
@@ -44,12 +43,14 @@ window.addEventListener('load', () => {
         };
     }
 
-    // New HTML
-    elements1 = new newProtoObj(
-    count = 50,
-    tag = 'div',
-    id = 'ele1',
-    className = 'elementClass').createNewHTML();
+    // class NewHTMLELEMENT {
+    //   constructor(count, tag, id, className) {
+    //     this.count = count;
+    //     this.tag = tag;
+    //     this.id = id;
+    //     this.className = className;
+    //   }
+    // }
 
     elements2 = new newProtoObj(
     count = 50,
