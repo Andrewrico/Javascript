@@ -22,27 +22,85 @@
             height: auto;
             max-width: 100%;
         }
+
+        #model_container {
+            width: 340px;
+            height: 240px;
+            background: gray;
+            border: black 1px solid;
+        }
+
+        #slider1 {
+            width: 300px
+        }
+
+        @keyframes spin {
+            0% {
+                background-position: 0px;
+            }
+
+            100% {
+                background-position: -2700px;
+            }
+        }
     </style>
+
+    <script>
+        let spriteSheet = new Image();
+
+        spriteSheet.src = "/sprite.png";
+
+        let model, spin_btn, slider;
+
+        function docReady() {
+
+            spin_btn = document.getElementById('spin_btn');
+            slider = document.getElementById('slider1');
+
+            spin_btn.addEventListener("click", spinFree);
+            slider.addEventListener("mousemove", controlView);
+            slider.addEventListener("change", controlView);
+
+            model = document.createElement('div');
+
+            model.id = "model_1";
+
+            model.style.width = "100px";
+            model.style.height = "150px";
+            model.style.margin = "8px auto";
+            model.style.background = "url(" + spriteSheet.src + ")";
+            model.style.backgroundPosition = "0px";
+
+            document.getElementById("model_container").appendChild(model);
+
+        };
+
+        function spinFree() {
+            model.style.animation = "spin 1.5s steps(18) infinite";
+        };
+
+
+        function controlView() {
+            model.style.animation = "";
+            model.style.backgroundPosition = -(slider.value * 100 - 100) + "px";
+        };
+
+        window.addEventListener("load", docReady);
+    </script>
 </head>
 
-<body></body>
-
-<script>
-
-let winpath = window.location.pathname;
-let topage = '/pages/';
-let pagename = 'how-to-make-youtube-videos/'
-let wintopath = `${winpath}=${topage}`
-let matchpath = `${wintopath}${pagename}`
-if(matchpath) {
-
-}
+<body>
 
 
+    <div id="model_container"></div>
 
-</script>
+    <p>
+        <input id="slider1" type="range" min="1" max="18" value="0" step="1">
+        <button id="spin_btn">Spin Free</button>
+    </p>
+
+</body>
+
 
 <!-- <script src="error-handle.js"></script> -->
-<script src="CreateNewHTMLFactory.js"></script>
-
-</html>
+<!--<script src="CreateNewHTMLFactory.js"></script>--></html>

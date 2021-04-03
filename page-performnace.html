@@ -1,0 +1,68 @@
+<!doctype html>
+
+<head>
+    <script>
+        window.performance.mark('parse_head_start');
+
+        function marks(name) {
+            return {
+                name,
+                get start() {
+                    return `${this.name}_start`;
+                },
+                get end() {
+                    return `${this.name}_end`;
+                }
+            };
+        }
+        window.markNames = {
+            head: marks('parse_head'),
+            body: marks('parse_body')
+        };
+
+    </script>
+
+    <!-- REST OF HEAD CODE -->
+
+    <script>
+        window.performance.mark(window.markNames.head.end);
+
+    </script>
+
+</head>
+
+<body>
+
+    <script>
+        window.performance.mark(window.markNames.body.start);
+
+    </script>
+
+    <!-- REST OF BODY CODE -->
+
+    <script>
+        window.addEventListener("load", function() {
+            Object.keys(window.markNames).forEach((name) => {
+                mark = window.markNames[name]
+                performance.measure(mark.name, mark.start, mark.end);
+            });
+            window.requestIdleCallback(() => {
+                var getShopifyResourceByType = (type) => {
+                    return performance.getEntriesByType('resource').filter((resource) => {
+                        return resource.name.indexOf('cdn.shopify.com') != -1 &&
+                            resource.initiatorType === type;
+                    })
+                };
+                // You can send this information to whatever analytics vendor
+                // For now, we are just outputting in console
+                console.log('############ PERFORMANCE METRICS ############');
+                console.log(performance.getEntriesByType('measure'));
+                console.log(performance.getEntriesByType('paint'));
+            });
+        });
+        window.performance.mark(window.markNames.body.end);
+
+    </script>
+</body>
+
+</html>
