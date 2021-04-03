@@ -5,11 +5,18 @@ window.addEventListener('load', () => {
   let factoryId = 'factory'
 
     // Create Obj
-    function newProtoObj(count, tag, id, className) {
+  function newProtoObj(count, tag, id, className) {
       this.count = count,
       this.tag = tag,
       this.id = id,
       this.className = className
+  }
+
+  function newGroupObj(count, tag, id, className) {
+    this.count = count,
+    this.tag = tag,
+    this.id = id,
+    this.className = className
   }
 
   // parent div
@@ -30,7 +37,7 @@ window.addEventListener('load', () => {
     // get fragment
     let newFragment = new DocumentFragment()
 
-    if (newFragment !== undefined) {
+    // if (newFragment !== undefined) {
 
     // Create HTML
     newProtoObj.prototype.createNewHTML = function() {
@@ -43,83 +50,69 @@ window.addEventListener('load', () => {
         };
     }
 
-    // class NewHTMLELEMENT {
-    //   constructor(count, tag, id, className) {
-    //     this.count = count;
-    //     this.tag = tag;
-    //     this.id = id;
-    //     this.className = className;
-    //   }
-    // }
+    newGroupObj.prototype.createNewGroup = function() {
+        createGroup = new newProtoObj(  
+          count = `${this.count}`,   
+          tag = `${this.tag}`,   
+          id = `${this.id}`,   
+          className = `${this.className}`
+        ).createNewHTML();
+    }
 
-    elements2 = new newProtoObj(
-    count = 50,
-    tag = 'div',
-    id = 'ele2',
-    className = 'elementClass').createNewHTML();
+    createGroup1 = new newGroupObj(100,  'div', 'element-1', 'group-1 column-2').createNewGroup();
+    createGroup2 = new newGroupObj(100,  'div', 'element-2', 'group-2 column-2').createNewGroup();
 
     // return fragment with groups
     return newFragment;
-
-    } 
-
+    // } 
   }
 
   // if function domNewElements is defined return function domGetElements
-  const domFactory = document.querySelector(`#${factoryId}`)
-  if (domNewElements !== undefined || domNewElements !== null) {
-    domFactory.append(domNewElements());
-  }
-
-  // manipulate elements
+  if (domNewElements !== undefined || domNewElements !== null) 
+  document.querySelector(`#${factoryId}`).append(domNewElements());
+  
+  // get elements
   const domGetElements = () => {
-
     // elements
-    let groupOne = document.querySelectorAll(`[id*="ele1-"][class*="elementClass"]`)
-    let groupTwo = document.querySelectorAll(`[id*="ele2-"][class*="elementClass"]`)
-
     // if function domNewElements is define
-      if (domNewElements !== undefined) {
-        // manipulate group one
-        for (let i = groupOne.length - 1; i >= 0; i--) {
+    // if (domNewElements !== undefined) {
 
-          groupOne[i].style.width = '100%'
-          groupOne[i].style.height = '100%'
+    //   let group1 = document.querySelectorAll(`[id*=element-1][class*="group-1 column-2"]`);
+    //   let group2 = document.querySelectorAll(`[id*=element-2][class*="group-2 column-2"]`);
 
-          if (i >= 10 && i <= 20) {
-            groupOne[i].style.background = 'orange'
-          }
+    //     // style group one
+    //     // for (let i = group1.length - 1; i >= 0; i--) {
+    //     //   [i].style.width = '100%'
+    //     //   [i].style.height = '100%'
+    //     //   if (i >= 10 && i <= 20) {
+    //     //     [i].style.background = 'orange'
+    //     //   }
+    //     // }
 
-        }
+    //     // style group two
+    //     // for (let i = group2.length - 1; i >= 0; i--) {
+    //     //   [i].style.background = 'red'
+    //     //   if (i <= 10) {
+    //     //     [i].style.background = 'blue'
+    //     //   }
+    //     // }
 
-        // manipulate group two
-        for (let i = groupTwo.length - 1; i >= 0; i--) {
-
-          groupTwo[i].style.background = 'red'
-
-          if (i <= 10) {
-            groupTwo[i].style.background = 'blue'
-          }
-        }
-      }
+    // }
 
       const elementStylesheet = document.createElement('style')
       elementStylesheet.innerHTML = `
-            .elementClass {
+            [class*="group-"] {
                 height: 100px;
                 width: 100%;
             };
       `;
-
+      
       let currentScriptTag = document.querySelector('script')
       currentScriptTag.parentNode.insertBefore(elementStylesheet, currentScriptTag)
 
-    } // const domGetElements = () => {
-
+} // const domGetElements = () => {
 
     // if function domNewElements is defined return function domGetElements
-    if (domNewElements !== undefined || domNewElements !== null) {
-      domGetElements();
-    };
+    if (domNewElements !== undefined || domNewElements !== null) domGetElements();
 
 });
