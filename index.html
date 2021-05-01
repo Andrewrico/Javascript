@@ -31,7 +31,7 @@
         }
 
         #slider1 {
-            width: 300px
+            width: 340px
         }
 
         @keyframes spin {
@@ -46,11 +46,11 @@
     </style>
 
     <script>
+        let model, spin_btn, slider;
         let spriteSheet = new Image();
 
         spriteSheet.src = "/sprite.png";
 
-        let model, spin_btn, slider;
 
         function docReady() {
 
@@ -65,9 +65,9 @@
 
             model.id = "model_1";
 
-            model.style.width = "100px";
-            model.style.height = "150px";
-            model.style.margin = "8px auto";
+            model.style.width = "150px";
+            model.style.height = "250px";
+            model.style.margin = "0 auto";
             model.style.background = "url(" + spriteSheet.src + ")";
             model.style.backgroundPosition = "0px";
 
@@ -75,15 +75,17 @@
 
         };
 
+
+        function controlView() {
+            model.style.animation = "";
+            model.style.backgroundPosition = -(slider.value * 150 - 150) + "px";
+        };
+
+
         function spinFree() {
             model.style.animation = "spin 1.5s steps(18) infinite";
         };
 
-
-        function controlView() {
-            model.style.animation = "";
-            model.style.backgroundPosition = -(slider.value * 100 - 100) + "px";
-        };
 
         window.addEventListener("load", docReady);
     </script>

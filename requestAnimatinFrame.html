@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #thing1 {
+            position:absolute;
+            top:100px;
+            width:100px;
+            height:100px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        button {
+            position:relative;
+            top:350px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="thing1"></div>
+
+    <button onmousedown="changeDir('left'); startAnimation()" onmouseup="stopAnimation()"> LEFT </button>
+    <button onmousedown="changeDir('right'); startAnimation()" onmouseup="stopAnimation()"> RIGHT </button>
+
+    <script>
+        let el = document.getElementById('thing1');
+        let reqID;
+        let dir;
+        function changeDir(d) {
+            dir = d;
+        }
+        function startAnimation() {
+            if( dir == "right")  {
+                el.style.left = (el.offsetLeft += 1) + 'px';
+            } else if ( dir == "left") {
+                el.style.left = (el.offsetLeft -= 1) + 'px';
+            }
+            reqID = window.requestAnimationFrame(startAnimation)
+        }
+        function stopAnimation() {
+            window.cancelAnimationFrame(reqID)
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Load script tag dynamically</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <a href="#" id="loadScriptTag">Watch video</a>
+    </div>
+
+
+    <script>
+        document.getElementById("loadScriptTag").onclick = function() {
+            loadScriptTag()
+        };
+    
+        function loadScriptTag() {
+            const scriptPromise = new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                document.body.appendChild(script);
+                script.onload = resolve;
+                script.onerror = reject;
+                script.async = true;
+                script.src = 'script.js';
+            });
+            scriptPromise.then(() => {});
+        }
+    
+        // const loadGoogleMaps = (callback) => {
+        // const existingScript = document.getElementById('googleMaps');
+        // if (!existingScript) {
+        // const script = document.createElement('script');
+        // script.src = 'script.js';
+        // script.id = 'googleMaps';
+        // document.body.appendChild(script);
+        
+        //     script.onload = () => {
+        //         if (callback) callback();
+        //     };
+        // }
+        //     if (existingScript && callback) callback();
+    
+        // };
+    </script>
+
+    
+</body>
+
+
+
+</html>
