@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div align="center">
+        <button id="trigger" onclick="lst();">Watch video #1</button>
+    </div>
+
+</body>
+
+<script>
+    const srcTag = "script.js";
+    const idTag = "facebookScript";
+    
+    const lst = (callback) => {
+        const gst = document.getElementById(`${idTag}`);
+        if (!gst) {
+            const cst = document.createElement('script');
+            cst.src = `${srcTag}`;
+            cst.id = `${idTag}`;
+            document.body.appendChild(cst);
+            cst.onload = () => {
+                if (callback) callback();
+            };
+        };
+        if (gst && callback) callback()
+    };
+</script></html>
